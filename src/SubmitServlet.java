@@ -81,7 +81,7 @@ public class SubmitServlet extends HttpServlet {
 		out.print("<form  action=\"submit_servlet\" method=\"POST\">\r\n" + 
 				"   <div class=\"d-flex flex-column pt-5 justify-content-center align-items-center\" >\r\n" + 
 				"     <input autofocus class=\"mb-2\" type=\"text\" name=\"name\" placeholder=\"Name\" />\r\n" + 
-				"      <input  class=\"mb-3\" type=\"text\" name=\"message\" placeholder=\"Message\" />\r\n" + 
+				"      <textarea class=\"mb-3\"  rows=\"5\" cols=\"22\" name=\"message\" placeholder=\"Message\"></textarea>\r\n" + 
 				"      <input   type=\"submit\" value=\"Submit\" />\r\n" + 
 				"   </div>\r\n" + 
 				"     \r\n" + 
