@@ -19,9 +19,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/submit_servlet")
 public class SubmitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	Vector<Message> messagesList = new Vector();
-
+//Vector<Message> messageList = new Vector();
+	
+	Db messagesList = new Db();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -52,10 +52,18 @@ public class SubmitServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String message = request.getParameter("message");
-
-		messagesList.addElement(new Message(name, message, new Date()));
 		
-		session.setAttribute("messagesList", messagesList);
+		//messagesList.addElement(new Message(name, message, new Date()));
+		
+		//messagesList.setMessageObject(name, message, new Date());
+		Message messageObject = new Message(name,message,new Date());
+		
+		messagesList.setMessageDatabase(messageObject);
+//		SearchServlet searchObject=new SearchServlet();
+//		searchObject.setMessagesList(messagesList.getMessageDatabase());
+		//session.setAttribute("messagesList", messagesList);
+		//session.setAttribute("messagesList", messagesList.getMessageDatabase());
+		//SearchServlet searchObj = new SearchServlet(messagesList.getMessageDatabase());
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
@@ -82,7 +90,7 @@ public class SubmitServlet extends HttpServlet {
 				"     \r\n" + 
 				"    </form>");
 		out.print("<div class=\"d-flex flex-row p-2 justify-content-start align-items-center \">");
-		for (Message item : messagesList) {
+		for (Message item : messagesList.getMessageDatabase()) {
 			out.print("<div class=\"card m-2 \"  style=\"max-width:18rem\">");
 			out.print("<h5 class=\"card-header bg-info text-white\">" + item.getName() + "</h5>");
 			out.print("<div class=\"card-body\"><p class=\"card-text\">" + "  " + item.getMessage() +  "</p>");
