@@ -48,7 +48,7 @@ public class SubmitServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session=request.getSession();
+	//	HttpSession session=request.getSession();
 
 		String name = request.getParameter("name");
 		String message = request.getParameter("message");
@@ -90,7 +90,7 @@ public class SubmitServlet extends HttpServlet {
 				"     \r\n" + 
 				"    </form>");
 		out.print("<div class=\"d-flex flex-row p-2 justify-content-start align-items-center \">");
-		for (Message item : messagesList.getMessageDatabase()) {
+		for (Message item : Db.getMessageDatabase()) {
 			out.print("<div class=\"card m-2 \"  style=\"max-width:18rem\">");
 			out.print("<h5 class=\"card-header bg-info text-white\">" + item.getName() + "</h5>");
 			out.print("<div class=\"card-body\"><p class=\"card-text\">" + "  " + item.getMessage() +  "</p>");
